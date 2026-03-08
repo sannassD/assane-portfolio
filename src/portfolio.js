@@ -140,7 +140,7 @@ const educationInfo = {
     {
       schoolName: "Université Iba Der Thiam",
       logo: require("./assets/images/UIDT.png"),
-      subHeader: "Licence en Génie Logiciel",
+      subHeader: "Licence : Génie Logiciel",
       duration: "Février 2021 - Avril 2025",
       desc: "Formation en génie logiciel axée sur le développement d'applications web, la conception de systèmes informatiques et la gestion des bases de données.",
       descBullets: [
@@ -153,7 +153,7 @@ const educationInfo = {
     {
       schoolName: "Lycée Malick SY",
       logo: require("./assets/images/lyceemalicksy.jpg"),
-      subHeader: "Baccalauréat en Sciences Expérimentales",
+      subHeader: "Baccalauréat : Sciences Expérimentales",
       duration: "Octobre 2016 - Juillet 2020",
       desc: "Formation scientifique axée sur les sciences fondamentales et le développement des capacités d'analyse et de raisonnement.",
       descBullets: [
