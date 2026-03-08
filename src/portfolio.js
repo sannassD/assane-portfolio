@@ -126,26 +126,45 @@ https://fontawesome.com/icons?d=gallery */
 
 const educationInfo = {
   display: true, // Set false to hide this section, defaults to true
-  schools: [
-    {
-      schoolName: "Universite Iba Der THIAM ",
-      logo: require("./assets/images/UIDT.png"),
-      subHeader: "Licence en Genie Logiciel",
-      duration: "Fevrier 2021 - Avril 2025",
-      desc: "J'ai suivi des cours sur l'ingénierie logicielle, la sécurité web et les systèmes d'exploitation.",
-      // descBullets: [
-      //   "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      //   "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      // ]
+{
+  schoolName: "Université Iba Der Thiam",
+  logo: require("./assets/images/UIDT.png"),
+  subHeader: "Master : Ingénierie des Données et Intelligence Artificielle",
+  duration: "2025 - En cours",
+  desc: "Formation axée sur l'analyse des données, l'intelligence artificielle et les technologies avancées de traitement de données.",
+  descBullets: [
+    "Analyse et traitement de données",
+    "Introduction à l'intelligence artificielle et au machine learning",
+    "Conception de systèmes intelligents et gestion de bases de données"
+  ]
+      
     },
-    {
-      schoolName: "Lycée Malick SY",
-      logo: require("./assets/images/lyceemalicksy.jpg"),
-      subHeader: "Baccalauréat en science experimentale",
-      duration: "Octobre 2016 - Juillet 2020",
-      desc: "J'ai suivi des cours sur les science physique, mathematique,de la terre, ...",
-      //descBullets: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit"]
-    }
+{
+  schoolName: "Université Iba Der Thiam",
+  logo: require("./assets/images/UIDT.png"),
+  subHeader: "Licence en Génie Logiciel",
+  duration: "Février 2021 - Avril 2025",
+  desc: "Formation en génie logiciel axée sur le développement d'applications web, la conception de systèmes informatiques et la gestion des bases de données.",
+  descBullets: [
+    "Développement d'applications web avec différentes technologies modernes",
+    "Conception et gestion de bases de données relationnelles",
+    "Étude des systèmes d'exploitation et de l'architecture des systèmes informatiques",
+    "Introduction à la sécurité web et aux bonnes pratiques de développement"
+  ]
+},
+   {
+  schoolName: "Lycée Malick SY",
+  logo: require("./assets/images/lyceemalicksy.jpg"),
+  subHeader: "Baccalauréat en Sciences Expérimentales",
+  duration: "Octobre 2016 - Juillet 2020",
+  desc: "Formation scientifique axée sur les sciences fondamentales et le développement des capacités d'analyse et de raisonnement.",
+  descBullets: [
+    "Étude approfondie des mathématiques et des sciences physiques",
+    "Cours de sciences de la vie et de la terre",
+    "Développement des compétences en analyse scientifique et résolution de problèmes",
+    "Travaux pratiques et expérimentations en laboratoire"
+  ]
+}
   ]
 };
 
