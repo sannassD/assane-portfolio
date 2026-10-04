@@ -23,7 +23,7 @@ const greeting = {
   username: "Assane DIA",
   title: "Salut, je suis Assane",
   subTitle: emoji(
-    "Un développeur Full Stack passionné 🚀 ayant une expérience dans la création d'applications Web et Mobile avec Laravel / Angular / Python / Reactjs  et d'autres bibliothèques et frameworks sympas."
+    "Un développeur Full Stack passionné 🚀 ayant une expérience dans la création d'applications Web et Mobile avec Laravel / Angular / Python / Reactjs  et d'autres bibliothèques et frameworks sympas. Fondateur de Xel Labs, studio web, mobile, data et IA."
   ),
   resumeLink:
     "https://drive.google.com/file/d/1_ocyfjF45ZUcEcebpF-PHU0W6gOAdBgd/view?usp=drive_link", // Set to empty to hide the button
@@ -193,6 +193,18 @@ const workExperiences = {
   display: true,
   experience: [
     {
+      role: "Fondateur · Concepteur & Développeur",
+      company: "Xel Labs",
+      companylogo: require("./assets/images/xellabs.png"),
+      date: "2026 – Présent",
+      desc: "Studio technologique basé entre Dakar et Thiès : sites, applications, data et IA pour les entreprises, au Sénégal et à distance (France, Belgique, Canada).",
+      descBullets: [
+        "Sites vitrines et plateformes web sur mesure",
+        "Applications mobiles et back-offices",
+        "Solutions data et intelligence artificielle"
+      ]
+    },
+    {
       role: "Développeur",
       company: "Université Iba Der Thiam",
       companylogo: require("./assets/images/UIDT.png"),
@@ -256,6 +268,18 @@ const bigProjects = {
   title: "Grands Projets",
   subtitle: "Certaines startups et entreprises que j'ai aidées à créer leur technologie",
   projects: [
+    {
+      image: require("./assets/images/xellabs.png"),
+      projectName: "Xel Labs",
+      projectDesc: "Mon studio web, mobile, data et IA. Site vitrine Astro et démos de sites clients personnalisables.",
+      footerLink: [
+        {name: "Visiter le site", url: "https://xel-labs.com"},
+        {
+          name: "Voir une démo",
+          url: "https://xel-labs.com/demos/restaurant/"
+        }
+      ]
+    },
     {
       image: require("./assets/images/logo.png"),
       projectName: "EventManager",
