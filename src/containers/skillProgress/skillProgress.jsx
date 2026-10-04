@@ -33,7 +33,7 @@ export default function StackProgress() {
             ) : (
               <img
                 alt="Skills"
-                src={require("../../assets/images/skill.svg")}
+                src={new URL("../../assets/images/skill.svg", import.meta.url).href}
               />
             )}
           </div>

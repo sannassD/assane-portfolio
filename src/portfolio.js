@@ -35,7 +35,7 @@ const greeting = {
 const socialMediaLinks = {
   github: "https://github.com/sannassD",
   linkedin: "https://www.linkedin.com/in/assane-dia-/",
-  gmail: "diaassane604@gmail.com",
+  gmail: "contact@xel-labs.com",
   Instagram: "https://www.instagram.com/sann.diah/",
   //gitlab: "https://gitlab.com/saadpasta",
   //facebook: "https://www.facebook.com/saad.pasta7",
@@ -127,7 +127,7 @@ const educationInfo = {
   schools: [
     {
       schoolName: "Université Iba Der Thiam",
-      logo: require("./assets/images/UIDT.png"),
+      logo: new URL("./assets/images/UIDT.png", import.meta.url).href,
       subHeader: "Master : Ingénierie des Données et Intelligence Artificielle",
       duration: "2025 - En cours",
       desc: "Formation axée sur l'analyse des données, l'intelligence artificielle et les technologies avancées de traitement de données.",
@@ -139,7 +139,7 @@ const educationInfo = {
     },
     {
       schoolName: "Université Iba Der Thiam",
-      logo: require("./assets/images/UIDT.png"),
+      logo: new URL("./assets/images/UIDT.png", import.meta.url).href,
       subHeader: "Licence : Génie Logiciel",
       duration: "Février 2021 - Avril 2025",
       desc: "Formation en génie logiciel axée sur le développement d'applications web, la conception de systèmes informatiques et la gestion des bases de données.",
@@ -152,7 +152,7 @@ const educationInfo = {
     },
     {
       schoolName: "Lycée Malick SY",
-      logo: require("./assets/images/lyceemalicksy.jpg"),
+      logo: new URL("./assets/images/lyceemalicksy.jpg", import.meta.url).href,
       subHeader: "Baccalauréat : Sciences Expérimentales",
       duration: "Octobre 2016 - Juillet 2020",
       desc: "Formation scientifique axée sur les sciences fondamentales et le développement des capacités d'analyse et de raisonnement.",
@@ -195,7 +195,7 @@ const workExperiences = {
     {
       role: "Fondateur · Concepteur & Développeur",
       company: "Xel Labs",
-      companylogo: require("./assets/images/xellabs.png"),
+      companylogo: new URL("./assets/images/xellabs.png", import.meta.url).href,
       date: "2026 – Présent",
       desc: "Studio technologique basé entre Dakar et Thiès : sites, applications, data et IA pour les entreprises, au Sénégal et à distance (France, Belgique, Canada).",
       descBullets: [
@@ -207,7 +207,7 @@ const workExperiences = {
     {
       role: "Développeur",
       company: "Université Iba Der Thiam",
-      companylogo: require("./assets/images/UIDT.png"),
+      companylogo: new URL("./assets/images/UIDT.png", import.meta.url).href,
       date: "2023 – 2024",
       desc: "Développement d'applications et de plateformes web pour l'université.",
       descBullets: [
@@ -219,7 +219,7 @@ const workExperiences = {
     {
       role: "Administrateur Système",
       company: "Université Iba Der Thiam",
-      companylogo: require("./assets/images/UIDT.png"),
+      companylogo: new URL("./assets/images/UIDT.png", import.meta.url).href,
       date: "2023 – 2024",
       desc: "Gestion et administration des systèmes informatiques de l'université.",
       descBullets: [
@@ -230,7 +230,7 @@ const workExperiences = {
     {
       role: "Gérant",
       company: "Boissons et Cake (PRIMO, LANA, ACE)",
-      companylogo: require("./assets/images/PRIMO.png"),
+      companylogo: new URL("./assets/images/PRIMO.png", import.meta.url).href,
       date: "2022 – Présent",
       desc: "Gestion d'une activité de distribution de boissons et produits alimentaires.",
       descBullets: [
@@ -242,7 +242,7 @@ const workExperiences = {
     {
       role: "Secrétaire Général & Responsable Communication Digitale",
       company: "RUE PUBLIC DU CŒUR",
-      companylogo: require("./assets/images/RPC.jpeg"),
+      companylogo: new URL("./assets/images/RPC.jpeg", import.meta.url).href,
       date: "2020 – Présent",
       desc: "Gestion de la communication et de la coordination digitale de l'organisation.",
       descBullets: [
@@ -269,19 +269,15 @@ const bigProjects = {
   subtitle: "Certaines startups et entreprises que j'ai aidées à créer leur technologie",
   projects: [
     {
-      image: require("./assets/images/xellabs.png"),
+      image: new URL("./assets/images/xellabs.png", import.meta.url).href,
       projectName: "Xel Labs",
-      projectDesc: "Mon studio web, mobile, data et IA. Site vitrine Astro et démos de sites clients personnalisables.",
+      projectDesc: "Mon studio web, mobile, data et IA. Sites, applications, data et IA pour les entreprises.",
       footerLink: [
-        {name: "Visiter le site", url: "https://xel-labs.com"},
-        {
-          name: "Voir une démo",
-          url: "https://xel-labs.com/demos/restaurant/"
-        }
+        {name: "Visiter le site", url: "https://xel-labs.com"}
       ]
     },
     {
-      image: require("./assets/images/logo.png"),
+      image: new URL("./assets/images/logo.png", import.meta.url).href,
       projectName: "EventManager",
       projectDesc: "Application de gestion d'événements avec Laravel API et Angular.",
       footerLink: [
@@ -293,7 +289,7 @@ const bigProjects = {
       ]
     },
      {
-      image: require("./assets/images/SET.jpeg"),
+      image: new URL("./assets/images/SET.jpeg", import.meta.url).href,
       projectName: "StockSET",
       projectDesc: "Application de gestion de stock matiere avec Laravel API et Angular.",
       footerLink: [
@@ -305,7 +301,7 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/educationsn.webp"),
+      image: new URL("./assets/images/educationsn.webp", import.meta.url).href,
       projectName: "BFEEM",
       projectDesc: "Gestion des epreuves du BFEEM au Sénegal avec Python, Django et Mysql",
       footerLink: [
@@ -332,7 +328,7 @@ const achievementSection = {
       title: "Google Code-In Finalist",
       subtitle:
         "First Pakistani to be selected as Google Code-in Finalist from 4000 students from 77 different countries.",
-      image: require("./assets/images/codeInLogo.webp"),
+      image: new URL("./assets/images/codeInLogo.webp", import.meta.url).href,
       imageAlt: "Google Code-In Logo",
       footerLink: [
         {
@@ -353,7 +349,7 @@ const achievementSection = {
       title: "Google Assistant Action",
       subtitle:
         "Developed a Google Assistant Action JavaScript Guru that is available on 2 Billion devices world wide.",
-      image: require("./assets/images/googleAssistantLogo.webp"),
+      image: new URL("./assets/images/googleAssistantLogo.webp", import.meta.url).href,
       imageAlt: "Google Assistant Action Logo",
       footerLink: [
         {
@@ -366,7 +362,7 @@ const achievementSection = {
     {
       title: "PWA Web App Developer",
       subtitle: "Completed Certifcation from SMIT for PWA Web App Development",
-      image: require("./assets/images/pwaLogo.webp"),
+      image: new URL("./assets/images/pwaLogo.webp", import.meta.url).href,
       imageAlt: "PWA Logo",
       footerLink: [
         {name: "Certification", url: ""},
@@ -487,7 +483,7 @@ const contactInfo = {
   subtitle:
     "Vous voulez discuter d'un projet ou simplement dire bonjour ? Ma boîte de réception est ouverte à tous.",
   number: "+221772995716",
-  email_address: "diaassane604@gmail.com"
+  email_address: "contact@xel-labs.com"
 };
 
 // Twitter Section

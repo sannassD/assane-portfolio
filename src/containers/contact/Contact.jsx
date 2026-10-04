@@ -58,7 +58,7 @@ export default function Contact() {
             ) : (
               <img
                 alt="Man working"
-                src={require("../../assets/images/contactMailDark.svg")}
+                src={new URL("../../assets/images/contactMailDark.svg", import.meta.url).href}
               ></img>
             )}
           </div>

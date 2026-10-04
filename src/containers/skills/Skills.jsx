@@ -22,7 +22,7 @@ export default function Skills() {
             ) : (
               <img
                 alt="Man Working"
-                src={require("../../assets/images/developerActivity.svg")}
+                src={new URL("../../assets/images/developerActivity.svg", import.meta.url).href}
               ></img>
             )}
           </div>

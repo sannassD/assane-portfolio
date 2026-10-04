@@ -42,7 +42,7 @@ export default function Greeting() {
                 <Button text="Contact me" href="#contact" />
                 {greeting.resumeLink && (
                   <a
-                    href={require("./resume.pdf")}
+                    href={new URL("./resume.pdf", import.meta.url).href}
                     download="Resume.pdf"
                     className="download-link-button"
                   >
@@ -58,7 +58,7 @@ export default function Greeting() {
             ) : (
               <img
                 alt="man sitting on table"
-                src={require("../../assets/images/manOnTable.svg")}
+                src={new URL("../../assets/images/manOnTable.svg", import.meta.url).href}
               ></img>
             )}
           </div>
