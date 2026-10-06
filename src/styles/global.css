@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource-variable/plus-jakarta-sans/wght-italic.css";
+
+/* Charte Xel Labs — palette « Pétrole & Soleil », partagée avec xel-labs.com */
+@theme {
+  --color-ink: #10363F;        /* Pétrole : couleur principale */
+  --color-ink-deep: #0A2429;   /* Pétrole profond : fonds sombres */
+  --color-sun: #F2B33D;        /* Soleil : accent */
+  --color-data: #2DD4BF;       /* Turquoise data : détails sur fond sombre */
+  --color-data-dark: #0D9488;  /* Turquoise foncé : détails sur fond clair */
+  --color-mist: #F3F6F7;       /* Fond clair */
+  --color-line: #D7DCE2;       /* Filets */
+  --color-muted: #4A5468;      /* Texte secondaire sur clair */
+  --color-muted-dark: #B9CCD0; /* Texte secondaire sur sombre */
+
+  --font-display: "Plus Jakarta Sans Variable", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans Variable", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  ::selection {
+    background: var(--color-sun);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-sun);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* Apparition douce au défilement (seulement si JavaScript est actif) */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+html.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html.js .reveal { opacity: 1; transform: none; }
+}
+
+/* Mode sombre : automatique (réglage de l'appareil) ou forcé par le bouton du site.
+   html[data-theme] vaut "light" ou "dark" quand le visiteur a choisi ; absent = automatique.
+   Les logos gardent un fond blanc (classe bg-[#fff]). */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  & body { background-color: #0C1E22; color: #E6EFF1; }
+  & .bg-white { background-color: #0C1E22; }
+  & .bg-white\/95 { background-color: rgb(12 30 34 / 0.95); }
+  & .bg-mist { background-color: #102A30; }
+  & .bg-ink\/5 { background-color: rgb(255 255 255 / 0.08); }
+  & .text-ink { color: #E6EFF1; }
+  & .text-muted { color: #A7BBC0; }
+  & .text-data-dark { color: #2DD4BF; }
+  & .border-line { border-color: #24414A; }
+  & .border-ink { border-color: #CFE0E3; }
+  & .bg-sun, & .bg-sun .text-ink { color: #10363F; }
+  & .bg-sun .border-ink { border-color: #10363F; }
+  & dialog { background-color: #0C1E22; color: #E6EFF1; }
+  & [data-brand-dark] { fill: #E6EFF1; }
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+  color-scheme: dark;
+  & body { background-color: #0C1E22; color: #E6EFF1; }
+  & .bg-white { background-color: #0C1E22; }
+  & .bg-white\/95 { background-color: rgb(12 30 34 / 0.95); }
+  & .bg-mist { background-color: #102A30; }
+  & .bg-ink\/5 { background-color: rgb(255 255 255 / 0.08); }
+  & .text-ink { color: #E6EFF1; }
+  & .text-muted { color: #A7BBC0; }
+  & .text-data-dark { color: #2DD4BF; }
+  & .border-line { border-color: #24414A; }
+  & .border-ink { border-color: #CFE0E3; }
+  & .bg-sun, & .bg-sun .text-ink { color: #10363F; }
+  & .bg-sun .border-ink { border-color: #10363F; }
+  & dialog { background-color: #0C1E22; color: #E6EFF1; }
+  & [data-brand-dark] { fill: #E6EFF1; }
+  }
+}

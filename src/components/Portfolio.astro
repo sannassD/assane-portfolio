@@ -1,0 +1,273 @@
+---
+import * as icons from 'simple-icons';
+import BrandIcon from './BrandIcon.astro';
+import { t, links, skills, techCount, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = t[lang];
+const lookup = icons as Record<string, unknown>;
+const arrow = 'M7 17L17 7M9 7h8v8';
+const projectCount = 1 + c.projects.items.length;
+// Logos des projets, dans l'ordre de c.projects.items (null = monogramme)
+const projectLogos = ['/images/logo-uidt.webp', '/images/logo-medical.webp', '/images/logo-eventiz.webp', '/images/logo-set.webp', '/images/logo-education.webp'];
+// Captures réelles des applications (null = couverture avec logo)
+// Fond du médaillon (Eventiz : rose de la marque, logo en blanc)
+const projectTileBg = ['bg-[#fff]', 'bg-[#fff]', 'bg-[#E84A8A]', 'bg-[#fff]', 'bg-[#fff]'];
+const projectShots = ['/images/capture-cours.webp', '/images/capture-medical.webp', '/images/capture-eventiz.webp', '/images/capture-stock.webp', '/images/capture-bfem.webp'];
+const facts = [String(projectCount), String(techCount), '2'];
+const trust = [
+  { logo: 'uidt', name: 'Université Iba Der Thiam' },
+  { logo: 'primo', name: 'PRIMO' },
+  { logo: 'rpc', name: 'Rue Public du Cœur' },
+];
+---
+<!-- HERO -->
+<section class="relative bg-white overflow-hidden">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 pt-12 pb-16 sm:pt-20 sm:pb-24 grid gap-12 lg:grid-cols-[1.25fr_1fr] items-center">
+    <div class="flex flex-col gap-7 order-2 lg:order-1">
+      <p class="self-start inline-flex items-center gap-2.5 rounded-full border border-line px-4 py-1.5 text-sm font-medium">
+        <span class="relative flex w-2.5 h-2.5" aria-hidden="true">
+          <span class="absolute inset-0 rounded-full bg-emerald-500 opacity-60 motion-safe:animate-ping"></span>
+          <span class="relative w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+        </span>
+        {c.hero.available}
+      </p>
+      <div class="flex flex-col gap-4">
+        <p class="text-sm sm:text-base font-semibold text-data-dark">{c.hero.hello}</p>
+        <h1 class="font-display text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.2rem] font-extrabold tracking-tight text-balance">
+          {c.hero.title[0]} <span class="text-data-dark">{c.hero.title[1]}</span>
+        </h1>
+      </div>
+      <p class="text-lg sm:text-xl text-muted max-w-xl text-pretty leading-relaxed">{c.hero.text}</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#contact" class="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-ink text-white font-semibold hover:bg-ink-deep transition-colors">
+          {c.cta}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        </a>
+        <a href={links.cv[lang]} download class="inline-flex items-center gap-2 h-12 px-6 rounded-full border-2 border-ink font-semibold hover:bg-ink hover:text-white transition-colors">
+          {c.hero.cv}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14" /></svg>
+        </a>
+      </div>
+      <dl class="grid grid-cols-3 gap-4 pt-6 border-t border-line max-w-xl">
+        {facts.map((n, i) => (
+          <div class="flex flex-col gap-1">
+            <dt class="order-2 text-xs sm:text-sm text-muted leading-snug">{c.hero.facts[i]}</dt>
+            <dd class="order-1 font-display text-3xl sm:text-4xl font-extrabold">{n}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+    <div class="order-1 lg:order-2 relative mx-auto w-[calc(100%-1rem)] max-w-[22rem] lg:max-w-md lg:mr-4">
+      <div class="absolute inset-0 translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 rounded-[2rem] bg-ink" aria-hidden="true"></div>
+      <img src="/images/assane.webp" alt={c.hero.photo} width="800" height="1000" class="relative w-full aspect-[4/5] object-cover object-top rounded-[2rem]" fetchpriority="high" />
+      <div class="absolute left-4 bottom-4 right-4 sm:left-6 sm:right-auto rounded-2xl bg-white/95 backdrop-blur px-4 py-3 shadow-xl flex items-center gap-3">
+        <img src="/images/xellabs.webp" alt="" width="40" height="40" class="w-10 h-10 rounded-xl" />
+        <div class="text-sm leading-tight">
+          <p class="font-bold">Xel Labs</p>
+          <p class="text-muted">{c.experience.items[0].role}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIANCE -->
+<section class="border-y border-line bg-white">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-8 flex flex-col md:flex-row md:items-center gap-5 md:gap-10">
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-muted shrink-0">{c.hero.trust}</p>
+    <ul class="flex flex-wrap items-center gap-x-8 gap-y-4">
+      {trust.map((o) => (
+        <li class="flex items-center gap-3 grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition">
+          <img src={`/images/${o.logo}.webp`} alt="" width="36" height="36" loading="lazy" class="w-9 h-9 rounded-lg object-contain" />
+          <span class="text-sm font-semibold">{o.name}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<!-- CE QUE JE FAIS -->
+<section class="bg-ink-deep text-white">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+    <div class="max-w-2xl mb-12 reveal">
+      <p class="text-xs font-bold uppercase tracking-[0.22em] text-sun mb-3">{c.services.kicker}</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight leading-tight text-balance">{c.services.title}</h2>
+    </div>
+    <ol class="grid gap-8 md:grid-cols-3">
+      {c.services.items.map((s, i) => (
+        <li class="reveal flex flex-col gap-3 border-t-2 border-white/20 pt-5">
+          <span class="font-display text-3xl font-extrabold text-sun" aria-hidden="true">0{i + 1}</span>
+          <h3 class="font-display text-xl font-bold">{s.title}</h3>
+          <p class="text-muted-dark text-pretty">{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets" class="bg-white">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-28">
+    <div class="max-w-2xl mb-12 reveal">
+      <p class="text-xs font-bold uppercase tracking-[0.22em] text-data-dark mb-3">{c.projects.kicker}</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight leading-tight text-balance">{c.projects.title}</h2>
+    </div>
+
+    <article class="reveal rounded-[2rem] bg-mist overflow-hidden grid lg:grid-cols-[1.3fr_1fr] mb-8">
+      <div class="relative p-6 sm:p-10 pb-0 sm:pb-0 lg:pb-10 flex items-end">
+        <img src="/images/plateforme.webp" alt={c.projects.featured.shot} width="1200" height="750" loading="lazy" class="w-[88%] rounded-t-xl lg:rounded-xl shadow-2xl ring-1 ring-black/5" />
+        <img src="/images/plateforme-mobile.webp" alt="" width="450" height="916" loading="lazy" class="absolute right-6 sm:right-10 bottom-6 sm:bottom-10 w-[24%] rounded-[1.1rem] border-[5px] border-ink shadow-2xl hidden sm:block" />
+      </div>
+      <div class="p-7 sm:p-10 flex flex-col gap-4 justify-center">
+        <p class="text-xs font-bold uppercase tracking-[0.15em] text-data-dark">{c.projects.featured.tag}</p>
+        <h3 class="font-display text-3xl sm:text-4xl font-bold tracking-tight">{c.projects.featured.title}</h3>
+        <p class="text-muted text-pretty">{c.projects.featured.text}</p>
+        <ul class="pt-2 flex flex-wrap gap-2" aria-label={c.projects.stackLabel}>
+          {c.projects.featured.stack.map((s) => <li class="text-xs font-semibold px-3 py-1.5 rounded-full bg-white">{s}</li>)}
+        </ul>
+      </div>
+    </article>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {c.projects.items.map((p, i) => (
+        <article class="reveal group rounded-3xl border border-line overflow-hidden flex flex-col hover:border-ink transition-colors">
+          {projectShots[i] ? (
+            <div class="relative h-44 bg-mist overflow-hidden border-b border-line" aria-hidden="true">
+              <img src={projectShots[i]} alt="" loading="lazy" class="w-full h-full object-cover object-left-top transition-transform duration-700 group-hover:scale-105" />
+              <span class:list={[projectTileBg[i], "absolute left-4 bottom-4 w-12 h-12 rounded-xl p-1.5 shadow-lg flex items-center justify-center"]}><img src={projectLogos[i]} alt="" class="max-w-full max-h-full object-contain" /></span>
+              <span class="absolute top-3 left-4 rounded-full bg-ink-deep/85 px-2.5 py-1 font-display text-xs font-extrabold text-white">0{i + 2}</span>
+            </div>
+          ) : (
+            <div class="relative h-44 bg-ink-deep flex items-center justify-center" aria-hidden="true">
+              <span class="absolute top-4 left-5 font-display text-3xl font-extrabold text-white/90">0{i + 2}</span>
+              <span class="absolute top-6 right-5 flex gap-1.5"><span class="w-2 h-2 rounded-[2px] bg-data"></span><span class="w-2 h-2 rounded-[2px] bg-data"></span><span class="w-2 h-2 rounded-[2px] bg-sun"></span></span>
+              <span class:list={[projectTileBg[i], "w-36 h-24 rounded-2xl p-3 shadow-lg flex items-center justify-center translate-y-4 transition-transform duration-500 group-hover:scale-105"]}>
+                <img src={projectLogos[i]} alt="" loading="lazy" class="max-w-full max-h-full object-contain" />
+              </span>
+            </div>
+          )}
+          <div class="p-7 flex flex-col gap-3 flex-1">
+            <p class="text-xs font-bold uppercase tracking-[0.15em] text-muted">{p.tag}</p>
+            <h3 class="font-display text-xl font-bold">{p.title}</h3>
+            <p class="text-muted text-pretty">{p.text}</p>
+            <ul class="flex flex-wrap gap-2 pt-1" aria-label={c.projects.stackLabel}>
+              {p.stack.map((s) => <li class="text-xs font-semibold px-3 py-1 rounded-full bg-ink/5">{s}</li>)}
+            </ul>
+            {'link' in p && p.link && (
+              <a href={p.link} target="_blank" rel="noopener" class="mt-auto pt-3 inline-flex items-center gap-2 font-semibold hover:text-data-dark">
+                <BrandIcon name="siGithub" size={18} /> {c.projects.code}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d={arrow} /></svg>
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+      <a href="#contact" class="reveal group rounded-3xl bg-[#F2B33D] hover:bg-[#10363F] p-8 flex flex-col justify-between gap-8 min-h-[18rem] transition-colors">
+        <span class="font-display text-3xl font-extrabold leading-tight text-balance text-[#10363F] group-hover:text-[#fff] transition-colors">{c.projects.next}</span>
+        <span class="inline-flex items-center gap-2 font-semibold text-[#10363F] group-hover:text-[#F2B33D] transition-colors">
+          {c.cta}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="transition-transform group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCES -->
+<section id="competences" class="bg-mist">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+    <div class="max-w-2xl mb-12 reveal">
+      <p class="text-xs font-bold uppercase tracking-[0.22em] text-data-dark mb-3">{c.skillsTitle.kicker}</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight leading-tight text-balance">{c.skillsTitle.title}</h2>
+    </div>
+    <div class="grid gap-5 md:grid-cols-2">
+      {skills.map((g) => (
+        <div class="reveal rounded-3xl bg-white p-6 sm:p-7 flex flex-col gap-5">
+          <h3 class="text-sm font-bold uppercase tracking-[0.15em] text-muted">{g.group[lang]}</h3>
+          <ul class="flex flex-wrap gap-2.5">
+            {g.items.map(([key, label, url]) => (
+              <li>
+                <a href={url} target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 h-11 px-4 rounded-full border border-line text-sm font-medium hover:border-ink hover:-translate-y-0.5 transition">
+                  {key && lookup[key] && <BrandIcon name={key} size={18} color="brand" />}
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="bg-white">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-28 grid gap-12 lg:grid-cols-[1fr_2fr]">
+    <div class="reveal lg:sticky lg:top-28 self-start">
+      <p class="text-xs font-bold uppercase tracking-[0.22em] text-data-dark mb-3">{c.experience.kicker}</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight leading-tight text-balance">{c.experience.title}</h2>
+    </div>
+    <ol class="relative border-l-2 border-line ml-7">
+      {c.experience.items.map((e) => (
+        <li class="reveal relative pl-12 pb-12 last:pb-0">
+          <img src={`/images/${e.logo}.webp`} alt="" width="56" height="56" loading="lazy" class="absolute -left-[29px] top-0 w-14 h-14 rounded-2xl object-contain bg-[#fff] border border-line p-1" />
+          <p class="text-sm font-semibold text-data-dark">{e.date}</p>
+          <h3 class="font-display text-xl sm:text-2xl font-bold mt-1">{e.role}</h3>
+          <p class="font-medium mt-1">{'link' in e && e.link ? <a href={e.link} class="underline decoration-sun decoration-2 underline-offset-4 hover:text-data-dark">{e.company}</a> : e.company}</p>
+          <p class="text-muted text-pretty mt-3 max-w-2xl">{e.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- FORMATION -->
+<section id="formation" class="bg-mist">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+    <div class="max-w-2xl mb-12 reveal">
+      <p class="text-xs font-bold uppercase tracking-[0.22em] text-data-dark mb-3">{c.education.kicker}</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight leading-tight text-balance">{c.education.title}</h2>
+    </div>
+    <ol class="grid gap-6 md:grid-cols-3">
+      {c.education.items.map((e) => (
+        <li class="reveal rounded-3xl bg-white p-7 flex flex-col gap-3">
+          <div class="flex items-center justify-between gap-3">
+            <img src={`/images/${e.logo}.webp`} alt="" width="56" height="56" loading="lazy" class="w-14 h-14 rounded-2xl object-contain bg-[#fff] border border-line p-1" />
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-mist">{e.date}</span>
+          </div>
+          <h3 class="font-display text-lg font-bold leading-snug pt-2">{e.degree}</h3>
+          <p class="font-medium">{e.school}</p>
+          <p class="text-sm text-muted text-pretty">{e.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="bg-white">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+    <div class="rounded-[2rem] bg-ink text-white p-8 sm:p-14 grid gap-10 md:grid-cols-[1.4fr_1fr] items-center">
+      <div class="flex flex-col gap-4">
+        <h2 class="font-display text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-balance">{c.contact.title}</h2>
+        <p class="text-lg text-muted-dark text-pretty">{c.contact.text}</p>
+        <a href={links.xellabs + (lang === 'en' ? '/en/' : '')} class="self-start inline-flex items-center gap-2 font-medium underline decoration-sun underline-offset-4 hover:text-sun">
+          {c.contact.studio}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d={arrow} /></svg>
+        </a>
+      </div>
+      <div class="flex flex-col gap-3">
+        <a href={`mailto:${links.email}`} class="inline-flex items-center justify-center h-14 px-6 rounded-full bg-sun text-ink font-semibold hover:bg-white transition-colors">{links.email}</a>
+        <a href={links.whatsapp} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 h-14 px-6 rounded-full border-2 border-white/40 font-semibold hover:bg-white hover:text-ink transition-colors"><BrandIcon name="siWhatsapp" size={20} /> {c.contact.whatsapp}</a>
+        <div class="flex justify-center gap-2 pt-1">
+          <a href={links.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn" class="inline-flex w-11 h-11 items-center justify-center rounded-full bg-white/10 hover:bg-white hover:text-ink"><BrandIcon name="siLinkedin" size={20} /></a>
+          <a href={links.github} target="_blank" rel="noopener" aria-label="GitHub" class="inline-flex w-11 h-11 items-center justify-center rounded-full bg-white/10 hover:bg-white hover:text-ink"><BrandIcon name="siGithub" size={20} /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+// Mentions légales et confidentialité du portfolio, en français et en anglais.
+import { links, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const updated = '2026-10-06';
+
+const fr = {
+  title: 'Mentions légales et confidentialité',
+  updated: 'Dernière mise à jour',
+  sections: [
+    { h: 'Éditeur du site', p: [`Ce site est édité par Assane DIA, développeur indépendant et fondateur de Xel Labs, Thiès, Sénégal.`, `Contact : <a href="mailto:${links.email}">${links.email}</a>`] },
+    { h: 'Hébergement', p: ['Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis — vercel.com.'] },
+    { h: 'Propriété intellectuelle', p: ['Les textes, le code et la mise en page de ce site appartiennent à Assane DIA. Toute reproduction sans autorisation est interdite. Les logos des organisations et projets cités appartiennent à leurs propriétaires respectifs et sont affichés à titre de références.'] },
+    { h: 'Données personnelles', p: ['Ce site ne contient aucun formulaire et ne collecte aucune donnée personnelle. Si vous me contactez par e-mail ou par WhatsApp, vos messages servent uniquement à vous répondre et ne sont jamais transmis à des tiers.', 'Conformément à la loi sénégalaise n° 2008-12 du 25 janvier 2008 sur la protection des données à caractère personnel et, pour les visiteurs de l’Union européenne, au Règlement général sur la protection des données (RGPD), vous pouvez demander l’accès, la rectification ou la suppression de vos données en écrivant à l’adresse ci-dessus.'] },
+    { h: 'Mesure d’audience', p: ['Ce site utilise Vercel Web Analytics, un outil de statistiques sans cookies qui ne permet pas de vous identifier : seules des données agrégées (pages vues, pays, type d’appareil) sont mesurées.'] },
+    { h: 'Crédits', p: ['Armoiries du Sénégal : Wikimedia Commons, licence CC BY-SA 3.0.', 'Bâton d’Asclépios : Wikimedia Commons, domaine public (CC0).', 'Logos des technologies : Simple Icons, licence CC0.'] },
+  ],
+};
+const en: typeof fr = {
+  title: 'Legal notice and privacy',
+  updated: 'Last updated',
+  sections: [
+    { h: 'Publisher', p: [`This website is published by Assane DIA, independent developer and founder of Xel Labs, Thiès, Senegal.`, `Contact: <a href="mailto:${links.email}">${links.email}</a>`] },
+    { h: 'Hosting', p: ['Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, United States — vercel.com.'] },
+    { h: 'Intellectual property', p: ['The text, code and design of this website belong to Assane DIA. Reproduction without permission is prohibited. Logos of the organisations and projects mentioned belong to their respective owners and are shown as references.'] },
+    { h: 'Personal data', p: ['This website has no forms and collects no personal data. If you contact me by email or WhatsApp, your messages are only used to reply to you and are never shared with third parties.', 'Under Senegalese law no. 2008-12 of 25 January 2008 on the protection of personal data and, for visitors from the European Union, the General Data Protection Regulation (GDPR), you may request access to, correction or deletion of your data by writing to the address above.'] },
+    { h: 'Analytics', p: ['This website uses Vercel Web Analytics, a cookie-free tool that cannot identify you: only aggregated data (page views, country, device type) is measured.'] },
+    { h: 'Credits', p: ['Coat of arms of Senegal: Wikimedia Commons, CC BY-SA 3.0 licence.', 'Rod of Asclepius: Wikimedia Commons, public domain (CC0).', 'Technology logos: Simple Icons, CC0 licence.'] },
+  ],
+};
+const c = lang === 'fr' ? fr : en;
+---
+<section class="bg-white">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 py-16 sm:py-24">
+    <h1 class="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">{c.title}</h1>
+    <p class="mt-3 text-sm text-muted">{c.updated} : {updated}</p>
+    <div class="mt-12 grid gap-10">
+      {c.sections.map((s) => (
+        <section class="grid gap-3">
+          <h2 class="font-display text-xl font-bold">{s.h}</h2>
+          {s.p.map((t) => <p class="text-muted leading-relaxed [&_a]:text-ink [&_a]:underline" set:html={t} />)}
+        </section>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,31 +1,20 @@
 {
-  "name": "developerfolio",
-  "version": "0.1.0",
+  "name": "assane-portfolio",
+  "type": "module",
+  "version": "2.0.0",
   "private": true,
-  "dependencies": {
-    "colorthief": "^2.3.0",
-    "lottie-react": "^2.4.0",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-easy-emoji": "^1.8.1",
-    "react-headroom": "^3.0.0",
-    "react-reveal": "^1.2.2",
-    "react-twitter-embed": "^4.0.4",
-    "sass": "^1.105.1"
-  },
+  "description": "Portfolio d'Assane DIA, développeur full stack, data & IA, fondateur de Xel Labs",
   "scripts": {
-    "start": "node fetch.js && vite",
-    "build": "node fetch.js && vite build",
-    "preview": "vite preview",
-    "format": "prettier --write \"./**/*.{js,css,json,scss}\""
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^6.1.1",
-    "dotenv": "^18.0.5",
-    "prettier": "^2.3.1",
-    "vite": "^8.3.2"
-  },
-  "overrides": {
-    "sharp": "^0.35.5"
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.5",
+    "simple-icons": "^16.34.0",
+    "tailwindcss": "^4.3.3"
   }
 }
