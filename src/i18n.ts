@@ -4,7 +4,7 @@ export const home = { fr: '/', en: '/en/' } as const;
 
 export const links = {
   email: 'contact@xel-labs.com',
-  whatsapp: 'https://wa.me/221772995716',
+  whatsapp: 'https://wa.me/221762385476',
   linkedin: 'https://www.linkedin.com/in/assane-dia-/',
   github: 'https://github.com/sannassD',
   xellabs: 'https://xel-labs.com',
