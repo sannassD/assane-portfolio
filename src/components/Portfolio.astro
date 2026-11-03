@@ -111,39 +111,26 @@ const trust = [
 
 <!-- PRODUITS -->
 <section id="produits" class="bg-mist">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-28">
-    <div class="mb-12 reveal grid gap-6 md:grid-cols-[1.2fr_1fr] md:items-end">
-      <div>
-        <p class="text-xs font-bold uppercase tracking-[0.22em] text-data-dark mb-3">{c.products.kicker}</p>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-20">
+    <div class="reveal rounded-[2rem] bg-white border border-line p-7 sm:p-10 grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-center">
+      <div class="flex flex-col gap-4">
+        <p class="text-xs font-bold uppercase tracking-[0.22em] text-data-dark">{c.products.kicker}</p>
         <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight leading-tight text-balance">{c.products.title}</h2>
+        <p class="text-lg text-muted text-pretty">{c.products.text}</p>
+        <a href={c.products.url} target="_blank" rel="noopener" class="self-start inline-flex items-center gap-2 h-12 px-6 rounded-full bg-ink text-white font-semibold hover:bg-ink-deep transition-colors">
+          {c.products.cta}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d={arrow} /></svg>
+        </a>
       </div>
-      <p class="text-lg text-muted text-pretty">{c.products.text}</p>
+      <ul class="grid gap-3">
+        {c.products.items.map((x) => (
+          <li class="flex items-baseline gap-3 rounded-2xl bg-mist px-5 py-4">
+            <span class="font-display text-2xl font-extrabold" style={`color:${x.color}`}>{x.name}</span>
+            <span class="text-muted font-semibold">{x.what}</span>
+          </li>
+        ))}
+      </ul>
     </div>
-    <div class="grid gap-6 lg:grid-cols-3">
-      {c.products.items.map((x) => (
-        <article class="reveal group rounded-3xl bg-white border border-line overflow-hidden flex flex-col hover:border-ink transition-colors">
-          <a href={x.url} target="_blank" rel="noopener" class="block relative bg-ink-deep p-4 pb-0 overflow-hidden" aria-label={`${x.name} · ${c.products.live}`}>
-            <img src={x.image} alt="" width="1128" height="504" loading="lazy" class="w-full rounded-t-lg shadow-2xl transition-transform duration-700 group-hover:scale-[1.03]" />
-          </a>
-          <div class="p-7 flex flex-col gap-3 flex-1">
-            <p class="flex items-baseline gap-2.5"><span class="font-display text-3xl font-extrabold" style={`color:${x.color}`}>{x.name}</span><span class="text-sm font-semibold text-muted">{x.what}</span></p>
-            <p class="text-muted text-pretty">{x.text}</p>
-            <ul class="grid gap-1.5 text-sm">
-              {x.points.map((pt) => (
-                <li class="flex items-start gap-2"><svg class="shrink-0 mt-0.5 text-data-dark" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 7" /></svg>{pt}</li>
-              ))}
-            </ul>
-            <a href={x.url} target="_blank" rel="noopener" class="mt-auto pt-3 inline-flex items-center gap-2 font-semibold hover:text-data-dark">
-              {c.products.live} · {x.url.replace('https://', '')}
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d={arrow} /></svg>
-            </a>
-          </div>
-        </article>
-      ))}
-    </div>
-    <ul class="mt-8 flex flex-wrap gap-2 reveal" aria-label={c.projects.stackLabel}>
-      {c.products.stack.map((x) => <li class="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-line">{x}</li>)}
-    </ul>
   </div>
 </section>
 
